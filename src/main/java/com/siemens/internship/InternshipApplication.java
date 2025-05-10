@@ -3,7 +3,7 @@ package com.siemens.internship;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.siemens.internship")
 public class InternshipApplication {
 
 	public static void main(String[] args) {
