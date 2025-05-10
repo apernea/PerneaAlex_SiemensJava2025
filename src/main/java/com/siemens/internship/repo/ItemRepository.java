@@ -1,4 +1,4 @@
-package com.siemens.internship;
+package com.siemens.internship.repo;
 
 import com.siemens.internship.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
