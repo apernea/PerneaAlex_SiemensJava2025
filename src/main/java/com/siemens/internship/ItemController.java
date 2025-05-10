@@ -55,11 +55,14 @@ public class ItemController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
-        itemService.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
-    }
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+            if (itemService.findById(id).isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            itemService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
 
     @GetMapping("/process")
     public ResponseEntity<List<Item>> processItems() {
