@@ -15,6 +15,9 @@ public class ItemService {
     private List<Item> processedItems = new ArrayList<>();
     private int processedCount = 0;
 
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
 
     public List<Item> findAll() {
         return itemRepository.findAll();
