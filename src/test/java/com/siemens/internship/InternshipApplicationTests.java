@@ -35,7 +35,13 @@ class InternshipApplicationTests {
 	private ItemRepository itemRepository;
 
 	@Test
-	void contextLoads() {
+	void testCreateItem() throws Exception {
+		Item item = new Item("test item", "description", "NEW", "apernea31@gmail.com");
+
+		mockMvc.perform(post("/api/items")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(mapper.writeValueAsString(item)))
+				.andExpect(status().isCreated());
 	}
 
 }
