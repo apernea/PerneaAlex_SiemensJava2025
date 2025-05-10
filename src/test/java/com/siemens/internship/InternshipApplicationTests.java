@@ -22,6 +22,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class InternshipApplicationTests {
 
+	@Autowired
+	private MockMvc mockMvc;
+
+	@Autowired
+	private ObjectMapper mapper = new ObjectMapper();
+
+	@Autowired
+	private ItemService itemService;
+
+	@Autowired
+	private ItemRepository itemRepository;
+
 	@Test
 	void contextLoads() {
 	}
