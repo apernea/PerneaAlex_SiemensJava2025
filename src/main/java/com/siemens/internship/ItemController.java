@@ -64,6 +64,14 @@ public class ItemController {
 
     @GetMapping("/process")
     public ResponseEntity<List<Item>> processItems() {
-        return new ResponseEntity<>(itemService.processItemsAsync(), HttpStatus.OK);
+        try{
+            List<Item> processed = itemService.processItemsAsync().get();
+            return new ResponseEntity<>(processed, HttpStatus.OK);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (ExecutionException e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
