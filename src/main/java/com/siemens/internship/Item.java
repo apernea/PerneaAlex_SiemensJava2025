@@ -25,4 +25,11 @@ public class Item {
 
     // Add email regex validation
     private String email;
+
+    public Item(String name, String description, String status, String email) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.email = email;
+    }
 }
