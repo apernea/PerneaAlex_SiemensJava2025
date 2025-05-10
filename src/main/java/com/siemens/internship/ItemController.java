@@ -39,11 +39,17 @@ public class ItemController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item item) {
-        Optional<Item> existingItem = itemService.findById(id);
-        if (existingItem.isPresent()) {
-            item.setId(id);
-            return new ResponseEntity<>(itemService.save(item), HttpStatus.CREATED);
+    public ResponseEntity<Item> updateItem(@PathVariable Long id, @Valid @RequestBody Item item) {
+        Optional<Item> existing = itemService.findById(id);
+
+        if (existing.isPresent()) {
+            Item toUpdate = existing.get();
+            toUpdate.setName(item.getName());
+            toUpdate.setDescription(item.getDescription());
+            toUpdate.setStatus(item.getStatus());
+            toUpdate.setEmail(item.getEmail());
+
+            return ResponseEntity.ok(itemService.save(toUpdate));
         } else {
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }
