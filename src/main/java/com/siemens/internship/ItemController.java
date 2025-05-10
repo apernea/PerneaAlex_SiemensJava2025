@@ -51,7 +51,7 @@ public class ItemController {
 
             return ResponseEntity.ok(itemService.save(toUpdate));
         } else {
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
