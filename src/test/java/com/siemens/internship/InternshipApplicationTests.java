@@ -1,6 +1,9 @@
 package com.siemens.internship;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.siemens.internship.model.Item;
+import com.siemens.internship.repo.ItemRepository;
+import com.siemens.internship.service.ItemService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
