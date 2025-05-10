@@ -9,11 +9,7 @@ import java.util.concurrent.*;
 
 @Service
 public class ItemService {
-    @Autowired
-    private ItemRepository itemRepository;
-    private static ExecutorService executor = Executors.newFixedThreadPool(10);
-    private List<Item> processedItems = new ArrayList<>();
-    private int processedCount = 0;
+    private final ItemRepository itemRepository;
 
     public ItemService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
