@@ -26,11 +26,9 @@ public class ItemController {
     }
 
     @PostMapping
-    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item, BindingResult result) {
-        if (result.hasErrors()) {
-            return new ResponseEntity<>(null, HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>(itemService.save(item), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item) {
+        Item savedItem = itemService.save(item);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedItem);
     }
 
     @GetMapping("/{id}")
